@@ -8,6 +8,7 @@ import 'account_state.dart';
 class AccountsBloc extends Bloc<AccountEvent, AccountState> {
   AccountsBloc(): super(AccountLoading()) {
     on<OnWidgetInit>(_loadAccounts);
+    on<OnCreateButtonPressed>(_createAccount);
   }
 
   Future<void> _loadAccounts(OnWidgetInit event, Emitter<AccountState> state) async {
@@ -23,9 +24,15 @@ class AccountsBloc extends Bloc<AccountEvent, AccountState> {
   Future<void> _createAccount(OnCreateButtonPressed event, Emitter<AccountState> state) async {
     emit(AccountInitial());
     try {
-
+      bool isCreated = await createAccount(event.authJwtToken, event.model);
+      if(isCreated) {
+        emit(AccountCreated());
+        emit(AccountLoading());
+      } else {
+        emit(AccountsFailure());
+      }
     } catch (e) {
-
+      emit(AccountsFailure());
     }
   }
 }

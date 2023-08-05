@@ -14,8 +14,10 @@ class OnWidgetInit extends AccountEvent {
 
 class OnCreateButtonPressed extends AccountEvent {
   final AccountFormModel model;
+  final String? authJwtToken;
 
     OnCreateButtonPressed({
-      required this.model
+      required this.model,
+      required this.authJwtToken
   });
 }

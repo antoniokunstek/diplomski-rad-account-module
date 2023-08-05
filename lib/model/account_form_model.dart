@@ -3,7 +3,8 @@ class AccountFormModel {
   String? accountNumber;
 
   AccountFormModel({
-    required this.accountName
+    required this.accountName,
+    required this.accountNumber
   });
 
   static Map<String, dynamic> toJson(AccountFormModel model) {
