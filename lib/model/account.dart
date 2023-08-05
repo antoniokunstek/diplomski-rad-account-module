@@ -5,7 +5,6 @@ class Account {
   String domicileCurrency;
   String accountColor;
   String amount;
-  bool isActive;
 
   Account({
     required this.accountId,
@@ -14,7 +13,6 @@ class Account {
     required this.domicileCurrency,
     required this.accountColor,
     required this.amount,
-    required this.isActive
   });
 
   factory Account.fromJson(Map<String, dynamic> map) {
@@ -23,7 +21,6 @@ class Account {
         accountNumber: map['accountNumber'],
         domicileCurrency: map['domicileCurrency'],
         accountColor: map['accountColor'],
-        amount: map['amount'],
-        isActive: map['isActive']);
-  }
+        amount: map['amount']);
+    }
 }
